@@ -1,8 +1,6 @@
 "use strict";
-var window = require("global/window")
 var isFunction = require("is-function")
 var parseHeaders = require("parse-headers")
-var xtend = require("xtend")
 
 module.exports = createXHR
 createXHR.XMLHttpRequest = window.XMLHttpRequest || noop
@@ -38,7 +36,7 @@ function initParams(uri, options, callback) {
             params = {uri:uri}
         }
     } else {
-        params = xtend(options, {uri: uri})
+        params = Object.assign(options, {uri: uri})
     }
 
     params.callback = callback
